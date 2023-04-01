@@ -1,0 +1,16 @@
+import requests
+
+def get_internet_provider():
+    try:
+        response = requests.get('http://ip-api.com/json/')
+        data = response.json()
+        return data['isp']
+    except:
+        return None
+
+internet_provider = get_internet_provider()
+
+if internet_provider:
+    print(f"You are using {internet_provider} as your internet provider.")
+else:
+    print("Could not determine internet provider.")
